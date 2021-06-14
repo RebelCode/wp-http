@@ -1,0 +1,42 @@
+{
+  "name": "rebelcode/wp-http",
+  "description": "A PSR-18 compliant HTTP client adapter for WordPress",
+  "keywords": ["wordpress", "http", "client", "psr-18", "psr-7"],
+  "type": "library",
+  "license": "GPL-3.0",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Miguel Muscat",
+      "email": "miguel.muscat@rebelcode.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.1 | ^8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.0 | ^8.0 | ^9.0",
+    "vimeo/psalm": "^4.0@stable",
+    "webmozart/path-util": "^2.3@stable",
+    "slevomat/coding-standard": "^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "RebelCode\\WordPress\\Http\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "RebelCode\\WordPress\\HttpTest\\Func\\": "tests/functional"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-initial": "0.1.x-dev"
+    }
+  }
+}
