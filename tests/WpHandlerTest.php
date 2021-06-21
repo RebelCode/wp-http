@@ -15,12 +15,12 @@ use WP_Mock;
 /** @covers \RebelCode\WordPress\Http\WpHandler */
 class WpHandlerTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         WP_Mock::setUp();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         WP_Mock::tearDown();
     }
