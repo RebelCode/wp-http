@@ -61,6 +61,7 @@ class WpHandler implements HandlerInterface
         $code = (int) wp_remote_retrieve_response_code($responseData);
         $reason = wp_remote_retrieve_response_message($responseData);
         $headers = wp_remote_retrieve_headers($responseData);
+        $headers = is_array($headers) ? $headers : iterator_to_array($headers);
         $body = wp_remote_retrieve_body($responseData);
 
         return new Response($code, $headers, $body, $httpVer, $reason);

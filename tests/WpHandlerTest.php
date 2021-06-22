@@ -10,11 +10,23 @@ use RebelCode\Psr7\Request;
 use RebelCode\Psr7\Uri;
 use RebelCode\WordPress\Http\HandlerInterface;
 use RebelCode\WordPress\Http\WpHandler;
+use Requests_Utility_CaseInsensitiveDictionary;
 use WP_Mock;
 
 /** @covers \RebelCode\WordPress\Http\WpHandler */
 class WpHandlerTest extends TestCase
 {
+    public static function setUpBeforeClass()
+    {
+        if (!class_exists('Requests_Utility_CaseInsensitiveDictionary')) {
+            require WORDPRESS_DIR . '/wp-includes/Requests/Utility/CaseInsensitiveDictionary.php';
+        }
+
+        if (!class_exists('Requests_Exception')) {
+            require WORDPRESS_DIR . '/wp-includes/Requests/Exception.php';
+        }
+    }
+
     protected function setUp(): void
     {
         WP_Mock::setUp();
@@ -55,10 +67,10 @@ class WpHandlerTest extends TestCase
         {
             $statusCode = 201;
             $statusReason = 'Created';
-            $responseHeaders = [
+            $responseHeaders = new Requests_Utility_CaseInsensitiveDictionary([
                 'Sam' => 'Eggs, Ham',
                 'Cat' => 'Hat',
-            ];
+            ]);
             $responseBody = 'Some response body content here';
 
             $responseData = [
