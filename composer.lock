@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7722c331cf424f67aa058565f8f4180",
+    "content-hash": "53689e20c5e934f17cb32cc21238d3ad",
     "packages": [
         {
             "name": "psr/http-client",
@@ -212,7 +212,7 @@
         },
         {
             "name": "rebelcode/psr7",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/psr7.git",
@@ -245,7 +245,6 @@
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -295,7 +294,7 @@
             ],
             "support": {
                 "issues": "https://github.com/RebelCode/psr7/issues",
-                "source": "https://github.com/RebelCode/psr7/tree/master"
+                "source": "https://github.com/RebelCode/psr7/tree/v1.0"
             },
             "time": "2021-06-17T12:54:19+00:00"
         }
@@ -4003,9 +4002,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "rebelcode/psr7": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
