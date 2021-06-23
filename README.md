@@ -1,9 +1,9 @@
 # RebelCode - WP HTTP Client
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rebelcode/wp-http/Continuous%20Integration)
-![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/rebelcode/wp-http)
-![Packagist Version](https://img.shields.io/packagist/v/rebelcode/wp-http)
-![Packagist License](https://img.shields.io/packagist/l/rebelcode/wp-http)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rebelcode/wp-http/Continuous%20Integration)][github-ci]
+[![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/rebelcode/wp-http)][packagist]
+[![Packagist Version](https://img.shields.io/packagist/v/rebelcode/wp-http)][packagist]
+[![Packagist License](https://img.shields.io/packagist/l/rebelcode/wp-http)][packagist]
 
 A WordPress HTTP client that complies with the [PSR-7 HTTP Message][psr7] and [PSR-18 HTTP client][psr18] standards.
 
@@ -163,6 +163,8 @@ $stack = new HandlerStack($baseHandler, [
 ]);
 ```
 
+[github-ci]: https://github.com/RebelCode/wp-http/actions/workflows/continuous-integration.yml
+[packagist]: https://packagist.org/packages/rebelcode/wp-http
 [psr7]: https://www.php-fig.org/psr/psr-7/
 [psr18]: https://www.php-fig.org/psr/psr-18/
 [guzzle]: https://github.com/guzzle/guzzle

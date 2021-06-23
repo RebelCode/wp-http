@@ -7,6 +7,9 @@ namespace RebelCode\WordPress\Http\Exception;
 use Psr\Http\Message\RequestInterface;
 use Throwable;
 
+/**
+ * An exception that is thrown in relation to a request.
+ */
 class RequestException extends HttpException
 {
     /** @var RequestInterface */

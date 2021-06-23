@@ -16,6 +16,18 @@ use Throwable;
  */
 class BadResponseException extends ResponseException
 {
+    /**
+     * Creates a bad response exception instance based on the status code of a response.
+     *
+     * @param RequestInterface  $request  The request that was dispatched to retrieve the response.
+     * @param ResponseInterface $response The response.
+     * @param Throwable|null    $previous Optional previous exception.
+     *
+     * @return BadResponseException An appropriately created exception:
+     *                              - a {@link ClientErrorException} for 4xx responses
+     *                              - a {@link ServerErrorException} for 5xx responses
+     *                              - a {@link BadResponseException} for other failed responses
+     */
     public static function create(
         RequestInterface $request,
         ResponseInterface $response,
@@ -54,7 +66,11 @@ class BadResponseException extends ResponseException
     }
 
     /**
-     * Obfuscates URI if there is a username and a password present
+     * Obfuscates URI if there is a username and a password present.
+     *
+     * @param UriInterface $uri The URI to obfuscate.
+     *
+     * @return UriInterface The obfuscated URI.
      */
     protected static function obfuscateUri(UriInterface $uri): UriInterface
     {

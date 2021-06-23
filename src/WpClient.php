@@ -12,6 +12,8 @@ use Psr\Http\Message\UriInterface;
 use RebelCode\Psr7\UriResolver;
 
 /**
+ * The PSR-18 client implementation.
+ *
  * @psalm-import-type WpHandlerOptions from WpHandler
  */
 class WpClient implements ClientInterface

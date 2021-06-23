@@ -10,6 +10,8 @@ use RebelCode\WordPress\Http\Middleware\HttpErrorsToExceptions;
 use RebelCode\WordPress\Http\Middleware\PrepareBody;
 
 /**
+ * A handler implementation that composes a base handler and a set of middleware handlers.
+ *
  * @psalm-type        MiddlewareFactory = callable(HandlerInterface): Middleware
  * @psalm-import-type WpHandlerOptions from WpHandler
  */

@@ -7,6 +7,9 @@ namespace RebelCode\WordPress\Http;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Interface for an object that can handle a request and provide a response for it.
+ */
 interface HandlerInterface
 {
     /**

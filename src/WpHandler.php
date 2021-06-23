@@ -11,6 +11,10 @@ use RebelCode\Psr7\Response;
 use function wp_remote_request;
 
 /**
+ * A handler that uses the WordPress HTTP API to dispatch requests.
+ *
+ * @see https://developer.wordpress.org/reference/functions/wp_remote_request/
+ *
  * @psalm-type WpHandlerOptions = array{
  *  timeout?: int,
  *  redirection?: int,
