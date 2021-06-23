@@ -16,17 +16,6 @@ use WP_Mock;
 /** @covers \RebelCode\WordPress\Http\WpHandler */
 class WpHandlerTest extends TestCase
 {
-    public static function setUpBeforeClass()
-    {
-        if (!class_exists('Requests_Utility_CaseInsensitiveDictionary')) {
-            require WORDPRESS_DIR . '/wp-includes/Requests/Utility/CaseInsensitiveDictionary.php';
-        }
-
-        if (!class_exists('Requests_Exception')) {
-            require WORDPRESS_DIR . '/wp-includes/Requests/Exception.php';
-        }
-    }
-
     protected function setUp(): void
     {
         WP_Mock::setUp();
