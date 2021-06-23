@@ -7,7 +7,7 @@ namespace RebelCode\WordPress\Http;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use RebelCode\WordPress\Http\Middleware\HttpErrorsToExceptions;
-use RebelCode\WordPress\Http\Middleware\PrepareBodyMiddleware;
+use RebelCode\WordPress\Http\Middleware\PrepareBody;
 
 /**
  * @psalm-type        MiddlewareFactory = callable(HandlerInterface): Middleware
@@ -66,7 +66,7 @@ class HandlerStack implements HandlerInterface
         return new HandlerStack(
             new WpHandler($options),
             [
-                Middleware::factory(PrepareBodyMiddleware::class),
+                Middleware::factory(PrepareBody::class),
                 Middleware::factory(HttpErrorsToExceptions::class),
             ]
         );

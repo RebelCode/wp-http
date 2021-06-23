@@ -12,8 +12,8 @@ use RebelCode\Psr7\Request;
 use RebelCode\WordPress\Http\HandlerInterface;
 use RebelCode\WordPress\Http\Middleware;
 
-/** @covers \RebelCode\WordPress\Http\Middleware\PrepareBodyMiddleware */
-class PrepareBodyMiddlewareTest extends TestCase
+/** @covers \RebelCode\WordPress\Http\Middleware\PrepareBody */
+class PrepareBodyTest extends TestCase
 {
     public function testExtendsMiddleware()
     {
@@ -35,7 +35,7 @@ class PrepareBodyMiddlewareTest extends TestCase
 
         $handler->expects($this->once())->method('handle')->with($request)->willReturn($response);
 
-        $subject = new Middleware\PrepareBodyMiddleware($handler);
+        $subject = new Middleware\PrepareBody($handler);
         $result = $subject->handle($request);
 
         self::assertSame($response, $result);
@@ -56,7 +56,7 @@ class PrepareBodyMiddlewareTest extends TestCase
 
         $handler->expects($this->once())->method('handle')->with($request)->willReturn($response);
 
-        $subject = new Middleware\PrepareBodyMiddleware($handler);
+        $subject = new Middleware\PrepareBody($handler);
         $result = $subject->handle($request);
 
         self::assertSame($response, $result);
@@ -78,7 +78,7 @@ class PrepareBodyMiddlewareTest extends TestCase
 
         $handler->expects($this->once())->method('handle')->with($newRequest)->willReturn($response);
 
-        $subject = new Middleware\PrepareBodyMiddleware($handler);
+        $subject = new Middleware\PrepareBody($handler);
         $result = $subject->handle($request);
 
         self::assertSame($response, $result);
@@ -100,7 +100,7 @@ class PrepareBodyMiddlewareTest extends TestCase
 
         $handler->expects($this->once())->method('handle')->with($newRequest)->willReturn($response);
 
-        $subject = new Middleware\PrepareBodyMiddleware($handler);
+        $subject = new Middleware\PrepareBody($handler);
         $result = $subject->handle($request);
 
         self::assertSame($response, $result);
@@ -122,7 +122,7 @@ class PrepareBodyMiddlewareTest extends TestCase
 
         $handler->expects($this->once())->method('handle')->with($newRequest)->willReturn($response);
 
-        $subject = new Middleware\PrepareBodyMiddleware($handler);
+        $subject = new Middleware\PrepareBody($handler);
         $result = $subject->handle($request);
 
         self::assertSame($response, $result);
@@ -144,7 +144,7 @@ class PrepareBodyMiddlewareTest extends TestCase
 
         $handler->expects($this->once())->method('handle')->with($newRequest)->willReturn($response);
 
-        $subject = new Middleware\PrepareBodyMiddleware($handler);
+        $subject = new Middleware\PrepareBody($handler);
         $result = $subject->handle($request);
 
         self::assertSame($response, $result);
@@ -166,7 +166,7 @@ class PrepareBodyMiddlewareTest extends TestCase
 
         $handler->expects($this->once())->method('handle')->with($newRequest)->willReturn($response);
 
-        $subject = new Middleware\PrepareBodyMiddleware($handler);
+        $subject = new Middleware\PrepareBody($handler);
         $result = $subject->handle($request);
 
         self::assertSame($response, $result);

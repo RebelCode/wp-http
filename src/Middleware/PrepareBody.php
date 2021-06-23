@@ -13,7 +13,7 @@ use RebelCode\WordPress\Http\Middleware;
 /**
  * Prepares requests that contain a body, adding the Content-Length and Content-Type headers.
  */
-class PrepareBodyMiddleware extends Middleware
+class PrepareBody extends Middleware
 {
     /** @inheritDoc */
     public function handle(RequestInterface $request): ResponseInterface
