@@ -1,13 +1,16 @@
 <?php
 
-declare(strict_types=1);
+const VENDOR_DIR = __DIR__ . '/../vendor';
+const WORDPRESS_DIR = VENDOR_DIR . '/johnpbloch/wordpress-core';
 
-(function (string $baseFile) {
-    $baseDir = dirname($baseFile);
-    $rootDir = dirname($baseDir);
-    define('ROOT_DIR', $rootDir);
+require_once VENDOR_DIR . '/autoload.php';
 
-    error_reporting(E_ALL | E_STRICT);
+WP_Mock::bootstrap();
 
-    require_once "$rootDir/vendor/autoload.php";
-})(__FILE__);
+if (!class_exists('Requests_Utility_CaseInsensitiveDictionary')) {
+    require WORDPRESS_DIR . '/wp-includes/Requests/Utility/CaseInsensitiveDictionary.php';
+}
+
+if (!class_exists('Requests_Exception')) {
+    require WORDPRESS_DIR . '/wp-includes/Requests/Exception.php';
+}

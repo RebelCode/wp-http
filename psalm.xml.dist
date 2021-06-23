@@ -10,7 +10,7 @@
         strictBinaryOperands="true"
         rememberPropertyAssignmentsAfterCall="true"
         allowPhpStormGenerics="true"
-        allowStringToStandInForClass="false"
+        allowStringToStandInForClass="true"
         memoizeMethodCallResults="false"
         hoistConstants="false"
         addParamDefaultToDocblockType="false"
@@ -24,6 +24,9 @@
 >
     <projectFiles>
         <directory name="src"/>
+        <ignoreFiles>
+          <directory name="tests"/>
+        </ignoreFiles>
     </projectFiles>
 
     <extraFiles>
@@ -146,5 +149,9 @@
         <MixedReturnStatement errorLevel="info"/>
         <MixedReturnTypeCoercion errorLevel="info"/>
         <MixedStringOffsetAssignment errorLevel="info"/>
+        <RedundantCastGivenDocblockType errorLevel="info"/>
     </issueHandlers>
+    <plugins>
+        <pluginClass class="PsalmWordPress\Plugin"/>
+    </plugins>
 </psalm>
