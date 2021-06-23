@@ -15,7 +15,7 @@
     "psr/http-client-implementation": "1.0"
   },
   "require": {
-    "php": "^7.1 | ^8.0",
+    "php": ">=7.1",
     "psr/http-client": "^1.0",
     "rebelcode/psr7": "dev-master"
   },
