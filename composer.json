@@ -3,7 +3,7 @@
   "description": "A PSR-18 compliant HTTP client adapter for WordPress",
   "keywords": ["wordpress", "http", "client", "psr-18", "psr-7"],
   "type": "library",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "authors": [
     {
       "name": "Miguel Muscat",
