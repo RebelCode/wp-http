@@ -8,6 +8,9 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
+/**
+ * An exception that is thrown in relation to a request its corresponding response.
+ */
 class ResponseException extends RequestException
 {
     /** @var ResponseInterface */
