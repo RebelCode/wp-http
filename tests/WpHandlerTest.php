@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace RebelCode\WordPress\Http\Test;
 
 use PHPUnit\Framework\TestCase;
+use Psalm\Internal\Composer;
 use Psr\Http\Message\ResponseInterface;
 use RebelCode\Psr7\Request;
 use RebelCode\Psr7\Uri;
 use RebelCode\WordPress\Http\HandlerInterface;
 use RebelCode\WordPress\Http\WpHandler;
 use Requests_Utility_CaseInsensitiveDictionary;
+use WP_Error;
 use WP_Mock;
 
 /** @covers \RebelCode\WordPress\Http\WpHandler */
@@ -124,5 +126,81 @@ class WpHandlerTest extends TestCase
         self::assertEquals(['Eggs, Ham'], $response->getHeader('Sam'));
         self::assertEquals(['Hat'], $response->getHeader('Cat'));
     }
-}
 
+    public function testHandleError()
+    {
+        // Request data
+        {
+            $uri = 'http://example.org/foo/bar';
+            $method = 'POST';
+            $httpVer = '1.1';
+            $requestBody = 'Some request body content here';
+            $psr7RequestHeaders = [
+                'Foo' => ['Bar', 'Baz'],
+                'Qux' => ['Quux'],
+            ];
+            $wpRequestHeaders = [
+                'Host' => 'example.org',
+                'Foo' => 'Bar, Baz',
+                'Qux' => 'Quux',
+            ];
+
+            $request = new Request($method, new Uri($uri), $psr7RequestHeaders, $requestBody, $httpVer);
+        }
+
+        // Response data
+        require_once __DIR__ . '/../vendor/johnpbloch/wordpress-core/wp-includes/class-wp-error.php';
+        $wpError = new WP_Error();
+
+        // WP function mocks
+        {
+            WP_Mock::userFunction('wp_remote_request', [
+                'times' => 1,
+                'args' => [
+                    $uri,
+                    [
+                        'method' => $method,
+                        'httpversion' => $httpVer,
+                        'headers' => $wpRequestHeaders,
+                        'body' => $requestBody,
+                    ],
+                ],
+                'return' => $wpError,
+            ]);
+
+            WP_Mock::userFunction('wp_remote_retrieve_response_code', [
+                'times' => 1,
+                'args' => [$wpError],
+                'return' => '',
+            ]);
+
+            WP_Mock::userFunction('wp_remote_retrieve_response_message', [
+                'times' => 1,
+                'args' => [$wpError],
+                'return' => '',
+            ]);
+
+            WP_Mock::userFunction('wp_remote_retrieve_headers', [
+                'times' => 1,
+                'args' => [$wpError],
+                'return' => [],
+            ]);
+
+            WP_Mock::userFunction('wp_remote_retrieve_body', [
+                'times' => 1,
+                'args' => [$wpError],
+                'return' => '',
+            ]);
+        }
+
+        $subject = new WpHandler();
+        $response = $subject->handle($request);
+
+        self::assertInstanceOf(ResponseInterface::class, $response);
+        self::assertEquals(400, $response->getStatusCode());
+        self::assertEquals('Bad Request', $response->getReasonPhrase());
+        self::assertEquals($httpVer, $response->getProtocolVersion());
+        self::assertEquals('', $response->getBody()->getContents());
+        self::assertEquals([], $response->getHeaders());
+    }
+}
