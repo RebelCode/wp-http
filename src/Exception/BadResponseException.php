@@ -8,7 +8,6 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 use RebelCode\Psr7\Message;
-use RebelCode\WordPress\Http\Middleware\HttpErrorsToExceptions;
 use Throwable;
 
 /**
