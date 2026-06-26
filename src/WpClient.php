@@ -27,14 +27,15 @@ class WpClient implements ClientInterface
     /**
      * Constructor.
      *
-     * @param HandlerInterface  $handler The handler to use for dispatching requests and receiving responses.
-     * @param UriInterface|null $baseUri Optional base URI for all relative requests sent using this client.
+     * @param HandlerInterface|null $handler The handler to use for dispatching requests and receiving responses.
+     *                                       Defaults to {@link HandlerStack::createDefault()} when null.
+     * @param UriInterface|null     $baseUri Optional base URI for all relative requests sent using this client.
      *
      * @throws InvalidArgumentException If the "base_uri" option is present and is not a valid URI.
      */
-    public function __construct(HandlerInterface $handler, ?UriInterface $baseUri = null)
+    public function __construct(?HandlerInterface $handler = null, ?UriInterface $baseUri = null)
     {
-        $this->handler = $handler;
+        $this->handler = $handler ?? HandlerStack::createDefault();
         $this->baseUri = $baseUri;
     }
 

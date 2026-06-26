@@ -11,7 +11,7 @@ use RebelCode\Psr7\Request;
 use RebelCode\Psr7\Uri;
 use RebelCode\WordPress\Http\HandlerInterface;
 use RebelCode\WordPress\Http\WpHandler;
-use Requests_Utility_CaseInsensitiveDictionary;
+use WpOrg\Requests\Utility\CaseInsensitiveDictionary;
 use WP_Error;
 use WP_Mock;
 
@@ -58,7 +58,7 @@ class WpHandlerTest extends TestCase
         {
             $statusCode = 201;
             $statusReason = 'Created';
-            $responseHeaders = new Requests_Utility_CaseInsensitiveDictionary([
+            $responseHeaders = new CaseInsensitiveDictionary([
                 'Sam' => 'Eggs, Ham',
                 'Cat' => 'Hat',
             ]);

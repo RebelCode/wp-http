@@ -28,6 +28,12 @@
     "johnpbloch/wordpress-core": ">=5.5",
     "humanmade/psalm-plugin-wordpress": "^2.0"
   },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "composer/package-versions-deprecated": true
+    }
+  },
   "autoload": {
     "psr-4": {
       "RebelCode\\WordPress\\Http\\": "src"
